@@ -6,6 +6,7 @@ public class Jugador extends Entidad {
     private boolean vivo;
     private String nombre;
     private boolean agachado;
+    private boolean tadeo;
     //private int punto
     //private int idUsuario
 
