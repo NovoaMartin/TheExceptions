@@ -8,7 +8,6 @@ public class Obstaculo{
 		super();
 		this.posicion = posicion;
 		this.descripcion = descripcion;
-		System.out.println("pruebaGithub");
 	}
 
 	public Ubicacion getPosicion() {
