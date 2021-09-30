@@ -20,8 +20,8 @@ public class Entidad {
     }
 
     public boolean colisionaCon(Entidad otro) {
-        boolean colisionaEnX = this.x + this.x >= otro.x && otro.x + otro.x >= this.x;
-        boolean colisionaEnY = this.y + this.y >= otro.y && otro.y + otro.y >= this.y;
+        boolean colisionaEnX = this.x + this.ancho >= otro.x && otro.ancho + otro.x >= this.x;
+        boolean colisionaEnY = this.y + this.alto >= otro.y && otro.alto + otro.y >= this.y;
         return colisionaEnX && colisionaEnY;
     }
 
