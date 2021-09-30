@@ -4,7 +4,7 @@ public class Entidad {
     protected int x;
     protected int y;
     private int ancho;
-    private int alto;
+    protected int alto;
     private String imagen;
 
     public Entidad(int x, int y, int ancho, int alto, String imagen) {
