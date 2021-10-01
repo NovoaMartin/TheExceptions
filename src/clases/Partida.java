@@ -13,11 +13,11 @@ public class Partida {
     ArrayList<Obstaculo> obstaculos;
 
 
-    public Partida(int velocidad, long tiempo) throws FileNotFoundException {
+    public Partida(int velocidad, long tiempo, String mapa) throws FileNotFoundException {
         this.velocidad = velocidad;
         this.tiempo = tiempo;
 
-        this.cargarObstaculos();
+        this.cargarObstaculos(mapa);
         jugadores.add(new Jugador(0, 0, 10, 10, "/img/dino.jpg", "Jugador"));
     }
 
@@ -32,8 +32,8 @@ public class Partida {
         }
     }
 
-    private void cargarObstaculos() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("Archivos/entrada/mapa1.in"));
+    private void cargarObstaculos(String nombreArchivo) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("Archivos/entrada/" + nombreArchivo));
         while (scanner.hasNextInt()) {
             int x = scanner.nextInt();
             int y = scanner.nextInt();
