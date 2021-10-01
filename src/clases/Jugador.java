@@ -2,7 +2,8 @@ package clases;
 
 
 public class Jugador extends Entidad {
-    public int velocidadY;
+
+    private int velocidadY;
     private boolean vivo;
     private String nombre;
     private boolean agachado;
@@ -60,7 +61,7 @@ public class Jugador extends Entidad {
     }
 
     public boolean colisionaCon(Obstaculo obstaculo) {
-        if (super.colisionaCon(new Entidad(0, 0, 0, 0, ""))) {
+        if (super.colisionaCon(obstaculo)) {
             this.morir();
             return true;
         }
@@ -75,4 +76,8 @@ public class Jugador extends Entidad {
     public String getNombre() {
         return nombre;
     }
+    public int getVelocidadY() {
+        return velocidadY;
+    }
+
 }
