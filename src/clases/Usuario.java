@@ -1,6 +1,6 @@
 package clases;
 
 public class Usuario {
-	int usuario;
-	
+	private String nombreUsuario, contrasenia, idUsuario;
+	//ver tema online
 }

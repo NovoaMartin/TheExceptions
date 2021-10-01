@@ -1,8 +1,11 @@
 package clases;
 
+import java.util.ArrayList;
+
 public class Menu {
 	
-	int entero;
+	private String nombreUsuario;
+	private ArrayList<Sala> salas;
 	
 	public void iniciarSesion() {
 		
