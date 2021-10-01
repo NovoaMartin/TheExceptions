@@ -6,6 +6,8 @@ public class Jugador extends Entidad {
     private int velocidadY;
     private boolean vivo;
     private String nombre;
+
+
     private boolean agachado;
     //private int punto
     //private int idUsuario
@@ -76,8 +78,13 @@ public class Jugador extends Entidad {
     public String getNombre() {
         return nombre;
     }
+
     public int getVelocidadY() {
         return velocidadY;
+    }
+
+    public boolean isAgachado() {
+        return agachado;
     }
 
 }
