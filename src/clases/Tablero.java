@@ -1,8 +1,8 @@
-//package clases;
+package clases;
 //
 //import java.util.List;
-//
-//public class Tablero {
+
+public class Tablero {
 //	private int [][] tablero=new int[5][5];
 //	private List<Obstaculo> listaObstaculos;
 //
@@ -46,4 +46,4 @@
 //		System.out.println("TABLERO AL CARGAR LOS OBSTACULOS");
 //		t.mostrarTablero();
 //	}
-//}
+}

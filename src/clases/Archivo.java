@@ -1,4 +1,4 @@
-//package clases;
+package clases;
 //
 //import java.io.File;
 //import java.io.FileNotFoundException;
@@ -6,7 +6,7 @@
 //import java.util.List;
 //import java.util.Scanner;
 //
-//public class Archivo {
+public class Archivo {
 //
 //	public List<Obstaculo> leerUbicacionObstaculos(String path){
 //		ArrayList<Obstaculo>obstaculos=new ArrayList<>();
@@ -38,4 +38,4 @@
 //			System.out.println(obstaculos.get(i).getPosicion().getPosx()+" "+obstaculos.get(i).getPosicion().getPosy()+" "+obstaculos.get(i).getDescripcion());
 //		}
 //	}
-//}
+}
