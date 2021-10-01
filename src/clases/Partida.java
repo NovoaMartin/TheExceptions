@@ -33,10 +33,12 @@ public class Partida {
     private void cargarObstaculos() throws FileNotFoundException {
         Scanner scanner = new Scanner(new File("Archivos/entrada/mapa1.in"));
         while (scanner.hasNextInt()) {
-            obstaculos.add(new Obstaculo(
-                    new Ubicacion(scanner.nextInt(), scanner.nextInt()),
-                    "obstaculo"
-            ));
+            int x = scanner.nextInt();
+            int y = scanner.nextInt();
+            int alto = scanner.nextInt();
+            int ancho = scanner.nextInt();
+            String imagen = "imagenes/" + scanner.nextInt();
+            obstaculos.add(new Obstaculo(x, y, alto, ancho, imagen));
         }
     }
 }
