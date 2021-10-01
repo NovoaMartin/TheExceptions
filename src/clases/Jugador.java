@@ -17,17 +17,28 @@ public class Jugador extends Entidad {
         this.agachado = false;
     }
 
+    /**
+     * Cada X tiempo se debe incrementar/decrementar la posicion Y
+     * dependiendo de velocidadY.
+     * No se implementarlo, dejo pseudocodigo comentado de como seria la logica
+     */
     public void saltar() {
-        //No implementado
+        //Solo puede saltar si esta en el piso, es decir, NO tiene velocidad en Y
         if (this.velocidadY == 0) {
             this.velocidadY = 5;
             this.posicion.setPosy(1);
-            //Cada X tiempo:
-            if (this.velocidadY > 0) {
-                this.posicion.setPosy(this.posicion.getPosy() + velocidadY);
-                velocidadY--;
-            }
         }
+
+        //Logica a ejecutarse cada frame del juego:
+//        if (velocidadY != 0) {
+//            int posicionFinal = this.posicion.getPosy() + velocidadY;
+//            if (posicionFinal < 0) {
+//                this.posicion.setPosy(0);
+//            } else {
+//                this.posicion.setPosy(posicionFinal);
+//            }
+//            velocidadY--;
+//        }
 
 
     }
