@@ -2,7 +2,7 @@ package clases;
 
 abstract public class Entidad {
     protected Ubicacion posicion;
-    private int ancho;
+    protected int ancho;
     protected int alto;
     private String imagen;
 

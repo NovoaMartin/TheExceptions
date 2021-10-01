@@ -1,13 +1,10 @@
 package clases;
-//
 
 public class Jugador extends Entidad {
 
     private int velocidadY;
     private boolean vivo;
     private String nombre;
-
-
     private boolean agachado;
     //private int punto
     //private int idUsuario
