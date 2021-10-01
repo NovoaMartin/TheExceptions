@@ -1,5 +1,4 @@
 package clases;
-//comentario
 
 public class Entidad {
     protected int x;
