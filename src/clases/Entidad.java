@@ -1,5 +1,6 @@
 package clases;
-//Hola mundo
+//comentario
+
 public class Entidad {
     protected int x;
     protected int y;
@@ -17,6 +18,7 @@ public class Entidad {
 
     public void moverse(int d) {
         this.x += d;
+        System.out.println("prueba");
     }
 
     public boolean colisionaCon(Entidad otro) {
