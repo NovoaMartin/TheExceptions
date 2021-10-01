@@ -3,30 +3,40 @@ package clases;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Partida {
     private int velocidad;
     private long tiempo;
 
-    ArrayList<Jugador> jugadores;
+    ArrayList<Jugador> jugadoresActivos;
+    ArrayList<Jugador> jugadoresTotales;
     ArrayList<Obstaculo> obstaculos;
 
 
-    public Partida(int velocidad, long tiempo, String mapa) throws FileNotFoundException {
+    public Partida(int velocidad, long tiempo, String mapa, int cantidadJugadores) throws FileNotFoundException {
         this.velocidad = velocidad;
         this.tiempo = tiempo;
-
         this.cargarObstaculos(mapa);
-        jugadores.add(new Jugador(0, 0, 10, 10, "/img/dino.jpg", "Jugador"));
+
+        for (int i = 1; i <= cantidadJugadores; i++) {
+            Jugador jugador = new Jugador(0, 0, 5, 10, "dino.jpg", "dino#" + i);
+            jugadoresActivos.add(jugador);
+            jugadoresTotales.add(jugador);
+        }
     }
 
     //Esto tiene que ejecutarse cada frame del juego
     private void verificarColisiones() {
-        for (Jugador jugador : jugadores) {
-            if (jugador.isVivo()) {
-                for (Obstaculo obstaculo : obstaculos) {
-                    jugador.colisionaCon(obstaculo);
+        Iterator<Jugador> iterator = jugadoresActivos.iterator();
+
+        while (iterator.hasNext()) {
+            Jugador jugador = iterator.next();
+            for (Obstaculo obstaculo : obstaculos) {
+                if (jugador.colisionaCon(obstaculo)) {
+                    iterator.remove();
+                    break;
                 }
             }
         }
