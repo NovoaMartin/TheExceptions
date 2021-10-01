@@ -1,37 +1,36 @@
 package clases;
 
 public class Entidad {
-    protected int x;
-    protected int y;
+    protected Ubicacion posicion;
     private int ancho;
     protected int alto;
     private String imagen;
 
     public Entidad(int x, int y, int ancho, int alto, String imagen) {
-        this.x = x;
-        this.y = y;
+        this.posicion = new Ubicacion(x, y);
         this.ancho = ancho;
         this.alto = alto;
         this.imagen = imagen;
     }
 
     public void moverse(int d) {
-        this.x += d;
-        System.out.println("prueba");
+        this.posicion.setPosx(this.posicion.getPosx() + d);
     }
 
     public boolean colisionaCon(Entidad otro) {
-        boolean colisionaEnX = this.x + this.ancho >= otro.x && otro.ancho + otro.x >= this.x;
-        boolean colisionaEnY = this.y + this.alto >= otro.y && otro.alto + otro.y >= this.y;
+        boolean colisionaEnX = this.posicion.getPosx() + this.ancho >=
+                otro.posicion.getPosx() && otro.ancho + otro.posicion.getPosx() >= this.posicion.getPosx();
+        boolean colisionaEnY = this.posicion.getPosy() + this.alto >=
+                otro.posicion.getPosy() && otro.alto + otro.posicion.getPosy() >= this.posicion.getPosy();
         return colisionaEnX && colisionaEnY;
     }
 
     public int getX() {
-        return x;
+        return posicion.getPosx();
     }
 
     public int getY() {
-        return y;
+        return posicion.getPosy();
     }
 
     public String getImagen() {

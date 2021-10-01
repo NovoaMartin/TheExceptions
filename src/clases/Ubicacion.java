@@ -3,9 +3,8 @@ package clases;
 public class Ubicacion {
 	private int posx;
 	private int posy;
-	
+
 	public Ubicacion(int posx, int posy) {
-		super();
 		this.posx = posx;
 		this.posy = posy;
 	}
@@ -25,6 +24,6 @@ public class Ubicacion {
 	public void setPosy(int posy) {
 		this.posy = posy;
 	}
-	
-	
+
+
 }

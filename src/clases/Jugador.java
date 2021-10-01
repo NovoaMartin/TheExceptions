@@ -17,20 +17,14 @@ public class Jugador extends Entidad {
         this.agachado = false;
     }
 
-    public void saltarInterno() {
-        if (this.velocidadY > 0) {
-            this.y += velocidadY;
-            velocidadY--;
-        }
-    }
-
     public void saltar() {
+        //No implementado
         if (this.velocidadY == 0) {
             this.velocidadY = 5;
-            this.y = 1;
+            this.posicion.setPosy(1);
             //Cada X tiempo:
-            if (this.y > 0) {
-                this.y += velocidadY;
+            if (this.velocidadY > 0) {
+                this.posicion.setPosy(this.posicion.getPosy() + velocidadY);
                 velocidadY--;
             }
         }
