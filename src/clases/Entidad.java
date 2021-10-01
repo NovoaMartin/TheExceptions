@@ -1,6 +1,6 @@
 package clases;
 
-public class Entidad {
+abstract public class Entidad {
     protected Ubicacion posicion;
     private int ancho;
     protected int alto;
