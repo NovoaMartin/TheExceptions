@@ -24,8 +24,10 @@ public class Partida {
     //Esto tiene que ejecutarse cada frame del juego
     private void verificarColisiones() {
         for (Jugador jugador : jugadores) {
-            for (Obstaculo obstaculo : obstaculos) {
-                jugador.colisionaCon(obstaculo);
+            if (jugador.isVivo()) {
+                for (Obstaculo obstaculo : obstaculos) {
+                    jugador.colisionaCon(obstaculo);
+                }
             }
         }
     }
