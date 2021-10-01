@@ -1,5 +1,5 @@
 package clases;
-
+//Hola mundo
 public class Entidad {
     protected int x;
     protected int y;
