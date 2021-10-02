@@ -10,7 +10,7 @@ jugadores.
 
 Se agregará dificultad a medida que vaya recorriendo el mapa, aumentando la velocidad del
 jugador.
-# TheExceptions
+# UML
 Diagrama de clases:
 ![Diagrama](doc/diagrama.png)
 
