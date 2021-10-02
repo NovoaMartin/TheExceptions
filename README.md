@@ -14,3 +14,5 @@ jugador.
 
 ![Diagrama](doc/diagrama.png)
 
+![Diagrama](doc/diagramaViejo.jpeg)
+
