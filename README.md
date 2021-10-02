@@ -2,4 +2,4 @@
 Diagrama de clases:
 ![Diagrama](doc/diagrama.png)
 ![Diagrama](doc/diagramaViejo.jpg)
-![Consigna](doc/juego.pdf)
+![Consigna](doc/Juego.pdf)
