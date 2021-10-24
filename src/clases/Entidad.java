@@ -1,16 +1,26 @@
 package clases;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 abstract public class Entidad {
     protected Ubicacion posicion;
     protected int ancho;
     protected int alto;
-    private String imagen;
+    private BufferedImage imagen;
 
-    public Entidad(int x, int y, int ancho, int alto, String imagen) {
+    public Entidad(int x, int y, String imagen) {
         this.posicion = new Ubicacion(x, y);
-        this.ancho = ancho;
-        this.alto = alto;
-        this.imagen = imagen;
+        try {
+            this.imagen = ImageIO.read(new File(imagen));
+            this.ancho = this.imagen.getWidth();
+            this.alto = this.imagen.getHeight();
+        } catch (IOException e) {
+            System.out.println("ERROR AL CARGAN IMAGEN");
+            imagen = null;
+        }
     }
 
     public void moverse(int d) {
@@ -33,7 +43,19 @@ abstract public class Entidad {
         return posicion.getPosy();
     }
 
-    public String getImagen() {
+    public BufferedImage getImagen() {
         return imagen;
+    }
+
+    public int getAncho() {
+        return ancho;
+    }
+
+    public int getAlto() {
+        return alto;
+    }
+
+    public void setY(int y) {
+        this.posicion.setPosy(y);
     }
 }
