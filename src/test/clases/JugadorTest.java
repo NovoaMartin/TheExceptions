@@ -9,7 +9,7 @@ public class JugadorTest {
 
     @Before
     public void setup() {
-        jugador = new Jugador(10, 0, 10, 10, "1.jpg", "test");
+        jugador = new Jugador(10, 0,  "1.jpg", "test");
     }
 
     @Test
@@ -26,14 +26,14 @@ public class JugadorTest {
 
     @Test
     public void colisionConObstaculoTest() {
-        Obstaculo obstaculo = new Obstaculo(14, 0, 2, 3, "1.jpg");
+        Obstaculo obstaculo = new Obstaculo(14, 0,  "1.jpg");
         Assert.assertTrue(jugador.colisionaCon(obstaculo));
         Assert.assertFalse(jugador.isVivo());
     }
 
     @Test
     public void colisionConObstaculoFalsaTest() {
-        Obstaculo obstaculo = new Obstaculo(50, 0, 2, 3, "1.jpg");
+        Obstaculo obstaculo = new Obstaculo(50, 0,  "1.jpg");
         Assert.assertFalse(jugador.colisionaCon(obstaculo));
         Assert.assertTrue(jugador.isVivo());
     }
