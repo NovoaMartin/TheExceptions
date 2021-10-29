@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class Partida extends JFrame implements Runnable {
-    public static final double GROUND_HEIGHT_PERCENTAGE = 0.85;
+    public static final double GROUND_HEIGHT_PERCENTAGE = 0.99;
     private static final int SECOND = 1000;
     private static final int FRAMES_PER_SECOND = 60;
     private static final int SKIP_FRAMES = SECOND / FRAMES_PER_SECOND;
@@ -47,6 +47,7 @@ public class Partida extends JFrame implements Runnable {
         this.jugadores = new ArrayList<>();
         this.pantallas = new ArrayList<>();
         this.PLAYER_AMOUNT = cantidadJugadores;
+        
 
 
         //Init pantallas y jugadores
@@ -56,7 +57,7 @@ public class Partida extends JFrame implements Runnable {
             jugadores.add(jugador);
         }
         for (int i = 0; i < PLAYER_AMOUNT; i++) {
-            pantallas.add(new Pantalla(jugadores.get(i), this));
+            pantallas.add(new Pantalla(jugadores.get(i), this,"fondo.jpg"));
         }
         for (Pantalla pantalla : pantallas) {
             add(pantalla);
@@ -78,7 +79,7 @@ public class Partida extends JFrame implements Runnable {
 
         for (Jugador jugador : jugadores) {
             jugador.setY((int) (getContentPane().getSize().getHeight() * GROUND_HEIGHT_PERCENTAGE));
-            System.out.println(jugador.getY());
+           // System.out.println(jugador.getY());
         }
 
 
