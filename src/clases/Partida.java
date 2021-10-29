@@ -15,7 +15,7 @@ public class Partida extends JFrame implements Runnable {
     private static final int SECOND = 1000;
     private static final int FRAMES_PER_SECOND = 60;
     private static final int SKIP_FRAMES = SECOND / FRAMES_PER_SECOND;
-    private static final int TICKS_PER_SECOND = 30;
+    private static final int TICKS_PER_SECOND = 50;
     private static final int SKIP_TICKS = SECOND / TICKS_PER_SECOND;
     public int PLAYER_AMOUNT;
     boolean isRunning = true;
@@ -51,7 +51,7 @@ public class Partida extends JFrame implements Runnable {
 
         //Init pantallas y jugadores
         for (int i = 1; i <= PLAYER_AMOUNT; i++) {
-            Jugador jugador = new Jugador(50, 0, "estoico.png", "dino#" + i);
+            Jugador jugador = new Jugador(50, 0, "dinogif.gif", "dino#" + i);
             jugador.saltar();
             jugadores.add(jugador);
         }
@@ -88,8 +88,20 @@ public class Partida extends JFrame implements Runnable {
                 super.keyPressed(e);
                 if (e.getKeyCode() == KeyEvent.VK_R) {
                     jugadores.get(0).revivir();
-                } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    jugadores.get(0).saltar();
+                } 
+                else
+                {
+                    switch(e.getKeyCode()) {
+                    case KeyEvent.VK_A: jugadores.get(0).saltar();
+                    break;
+                    case KeyEvent.VK_S: jugadores.get(1).saltar();
+                    break;
+                    case KeyEvent.VK_D: jugadores.get(2).saltar();
+                    break;
+                    case KeyEvent.VK_F: jugadores.get(3).saltar();
+                    break;
+                    }
+                	
                 }
             }
         });

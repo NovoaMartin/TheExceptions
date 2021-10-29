@@ -1,23 +1,30 @@
 package clases;
 
 import javax.imageio.ImageIO;
+
+import org.junit.internal.builders.NullBuilder;
+
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 abstract public class Entidad {
     protected Ubicacion posicion;
     protected int ancho;
     protected int alto;
-    private BufferedImage imagen;
+    private Image imagen;
 
     public Entidad(int x, int y, String imagen) {
         this.posicion = new Ubicacion(x, y);
         try {
-            this.imagen = ImageIO.read(new File(imagen));
-            this.ancho = this.imagen.getWidth();
-            this.alto = this.imagen.getHeight();
-        } catch (IOException e) {
+        	Toolkit toolkit = Toolkit.getDefaultToolkit();
+            this.imagen = toolkit.getImage(imagen);
+            this.ancho = 70;
+            this.alto = 40;
+        } catch (NullPointerException e) {
             System.out.println("ERROR AL CARGAN IMAGEN");
             imagen = null;
         }
@@ -43,10 +50,10 @@ abstract public class Entidad {
         return posicion.getPosy();
     }
 
-    public BufferedImage getImagen() {
+    public Image getImagen() {
         return imagen;
     }
-
+    
     public int getAncho() {
         return ancho;
     }
