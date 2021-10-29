@@ -1,16 +1,19 @@
 package clases;
 
+import java.awt.image.BufferedImage;
+
 public class Jugador extends Entidad {
 
     private int velocidadY;
     private boolean vivo;
     private String nombre;
     private boolean agachado;
+    private static final int gravity = 2;
     //private int punto
     //private int idUsuario
 
-    public Jugador(int x, int y, int ancho, int alto, String imagen, String nombre) {
-        super(x, y, ancho, alto, imagen);
+    public Jugador(int x, int y, String imagen, String nombre) {
+        super(x, y, imagen);
         this.velocidadY = 0;
         this.vivo = true;
         this.nombre = nombre;
@@ -25,10 +28,8 @@ public class Jugador extends Entidad {
     public void saltar() {
         //Solo puede saltar si esta en el piso, es decir, NO tiene velocidad en Y
         if (this.velocidadY == 0) {
-            this.velocidadY = 5;
-            this.posicion.setPosy(1);
+            this.velocidadY = -41;
         }
-
         //Logica a ejecutarse cada frame del juego:
 //        if (velocidadY != 0) {
 //            int posicionFinal = this.posicion.getPosy() + velocidadY;
@@ -39,8 +40,18 @@ public class Jugador extends Entidad {
 //            }
 //            velocidadY--;
 //        }
+    }
 
-
+    public void manejarSalto(int groundHeight) {
+        if (this.velocidadY != 0) {
+            if (this.getY() + velocidadY >= groundHeight) {
+                this.setY(groundHeight);
+                this.velocidadY = 0;
+            } else {
+                this.setY(this.getY() + velocidadY);
+                this.velocidadY += gravity;
+            }
+        }
     }
 
     public void agacharse() {
@@ -55,7 +66,7 @@ public class Jugador extends Entidad {
         }
     }
 
-    private void morir() {
+    public void morir() {
         this.vivo = false;
     }
 
@@ -84,4 +95,15 @@ public class Jugador extends Entidad {
         return agachado;
     }
 
+    public void revivir(){
+        this.vivo=true;
+    }
+
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "posicion=" + posicion +
+                ", vivo=" + vivo +
+                '}';
+    }
 }

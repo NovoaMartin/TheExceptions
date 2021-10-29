@@ -26,4 +26,11 @@ public class Ubicacion {
 	}
 
 
+	@Override
+	public String toString() {
+		return "Ubicacion{" +
+				"posx=" + posx +
+				", posy=" + posy +
+				'}';
+	}
 }
