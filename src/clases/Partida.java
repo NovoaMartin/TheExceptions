@@ -17,7 +17,7 @@ public class Partida extends JFrame implements Runnable {
 	private static final int SECOND = 1000;
 	private static final int FRAMES_PER_SECOND = 60;
 	private static final int SKIP_FRAMES = SECOND / FRAMES_PER_SECOND;
-	private static final int TICKS_PER_SECOND = 30;
+	private static final int TICKS_PER_SECOND = 60;
 	private static final int SKIP_TICKS = SECOND / TICKS_PER_SECOND;
 	public int PLAYER_AMOUNT;
 	boolean isRunning = true;
@@ -25,7 +25,7 @@ public class Partida extends JFrame implements Runnable {
 	public static void main(String[] args) throws FileNotFoundException {
 		JFrame frame = new JFrame();
 
-		JButton button = new JButton("Play");
+		JButton button = new JButton("Jugar");
 		frame.setLayout(new BorderLayout());
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
