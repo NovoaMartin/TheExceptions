@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Jugador extends Entidad {
 
-	private double puntuacion;
+	private int puntuacion;
 	private int velocidadY;
 	private boolean vivo;
 	private String nombre;
@@ -118,11 +118,11 @@ public class Jugador extends Entidad {
 		this.nombre = nombre;
 	}
 
-	public double getPuntuacion() {
+	public int getPuntuacion() {
 		return puntuacion;
 	}
 
-	public void setPuntuacion(double puntuacion) {
+	public void setPuntuacion(int puntuacion) {
 		this.puntuacion = puntuacion;
 	}
 }

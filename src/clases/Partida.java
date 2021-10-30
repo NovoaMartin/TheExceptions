@@ -230,11 +230,11 @@ public class Partida extends JFrame implements Runnable {
 			fin.setVisible(true);*/
 			JFrame frame = new JFrame();
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			/*Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		    int height = screenSize.height;
 		    int width = screenSize.width;
-		    frame.setSize(width/2, height/2);
-			//frame.setBounds(100, 100, 450, 300);
+		    frame.setSize(width/2, height/2);*/
+			frame.setBounds(100, 100, 450, 300);
 			JPanel contentPane = new JPanel();
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			setContentPane(contentPane);
@@ -259,22 +259,19 @@ public class Partida extends JFrame implements Runnable {
 
 			String[] columnNames = { "Posición", "Jugador", "Puntuación"};
 
-			Object[][] data = { { "1", "Smith", 45 },
-					{ "2", "Doe", "Rowing" },
-					{ "3", "Black", "Knitting" },
-					{ "4", "White", "Speed reading" },
-					{ "5", "Brown", "Pool" }};
+			Object[][] data = { { "1", jugadores.get(0).getNombre(), jugadores.get(0).getPuntuacion() },
+					{ "2", jugadores.get(1).getNombre(), jugadores.get(1).getPuntuacion()  },
+					{ "3", jugadores.get(2).getNombre(), jugadores.get(2).getPuntuacion()  },
+					{ "4", jugadores.get(3).getNombre(), jugadores.get(3).getPuntuacion()  }};
 
 			JTable table = new JTable(data, columnNames);
-			table.setEnabled(false);
-			table.setFillsViewportHeight(true);
-			table.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			table.setBounds(71, 108, 297, 80);
+			table.setBorder(new TitledBorder(50, "pOSICION"));
+			table.setBounds(71, 108, 297, 142);
 			contentPane.add(table);
 			
 
 		    // center the jframe on screen
-		    frame.setLocationRelativeTo(null);
+		    //frame.setLocationRelativeTo(null);
 			frame.add(contentPane);
 			frame.setVisible(true);
 		}
