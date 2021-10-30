@@ -62,4 +62,5 @@ abstract public class Entidad {
     public void setX(int x) {
     	this.posicion.setPosx(x);
     }
+
 }

@@ -112,4 +112,8 @@ public class Jugador extends Entidad {
 	public String toString() {
 		return "Jugador{" + "posicion=" + posicion + ", vivo=" + vivo + '}';
 	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 }

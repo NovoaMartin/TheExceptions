@@ -23,9 +23,35 @@ public class Partida extends JFrame implements Runnable {
 	boolean isRunning = true;
 
 	public static void main(String[] args) throws FileNotFoundException {
-		Partida p = new Partida(1, 0, "0", 4);
-		p.run();
+		JFrame frame = new JFrame();
+		JButton button = new JButton("Play");
 		
+		frame.setLayout(null);
+		frame.setBounds(10, 10, 10, 10);
+		button.setBounds(650, 650, 500, 100);
+		
+		frame.add(button);
+		frame.setExtendedState(MAXIMIZED_BOTH);
+		button.setFont(new Font("arial", 0, 30));
+		
+		frame.setVisible(true);
+
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Partida p = null;
+				Thread tp = null;
+				try {
+					p = new Partida(1, 0, "0", 4);
+					tp = new Thread(p);
+					
+				} catch (FileNotFoundException ex) {
+					ex.printStackTrace();
+				}
+				tp.start();
+			}
+		});
+
 	}
 
 	private int velocidad;
@@ -91,7 +117,7 @@ public class Partida extends JFrame implements Runnable {
 				} else if (e.getKeyCode() == KeyEvent.VK_A) {
 					jugadores.get(0).moverseXneg();
 				}
-				
+
 			}
 		});
 
