@@ -82,7 +82,7 @@ public class Partida extends JFrame implements Runnable {
 			jugadores.add(jugador);
 		}
 		for (int i = 0; i < PLAYER_AMOUNT; i++) {
-			pantallas.add(new Pantalla(jugadores.get(i), this));
+			pantallas.add(new Pantalla(jugadores.get(i), this, "fondo.jpg"));
 		}
 		for (Pantalla pantalla : pantallas) {
 			add(pantalla);

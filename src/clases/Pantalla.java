@@ -8,13 +8,16 @@ import java.util.Iterator;
 public class Pantalla extends JPanel {
     Jugador jugador;
     Partida partida;
+    Image fondo;
 
     ArrayList<Obstaculo> obstaculos;
 
-    public Pantalla(Jugador jugador, Partida partida) {
+    public Pantalla(Jugador jugador, Partida partida, String imagen) {
         this.jugador = jugador;
         this.partida = partida;
         obstaculos = new ArrayList<>();
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        this.fondo = toolkit.getImage(imagen);
 
         jugador.setY(100);
         for (int i = 0; i < 3; i++) {
@@ -28,6 +31,9 @@ public class Pantalla extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         Dimension currentDimension = partida.getContentPane().getSize();
+        //Render fondo
+        g2d.drawImage(fondo, 0, 0, getBackground(), partida);
+        System.out.println(partida.getContentPane().getHeight());
         //Render jugador:
         if (jugador.isVivo()) {
             g2d.drawImage(jugador.getImagen(), jugador.getX(), jugador.getY() / partida.PLAYER_AMOUNT - jugador.getImagen().getHeight(), null);
