@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
+import javax.swing.ImageIcon;
 
 public class prueba extends JFrame {
 
@@ -37,7 +38,7 @@ public class prueba extends JFrame {
 	 */
 	public prueba() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 422);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -70,7 +71,12 @@ public class prueba extends JFrame {
 		JTable table = new JTable(data, columnNames);
 		table.setFillsViewportHeight(true);
 		table.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		table.setBounds(71, 108, 297, 142);
+		table.setBounds(104, 105, 225, 80);
 		contentPane.add(table);
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\franc\\Documents\\GitHub\\TheExceptions\\auxilio-me.gif"));
+		lblNewLabel_3.setBounds(38, 196, 361, 193);
+		contentPane.add(lblNewLabel_3);
 	}
 }

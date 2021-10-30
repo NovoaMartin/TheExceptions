@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
@@ -63,6 +65,7 @@ public class Partida extends JFrame implements Runnable {
 
 	private ArrayList<Jugador> jugadores;
 	private ArrayList<Obstaculo> obstaculos;
+	private ArrayList<Jugador> jugadoresOrdenFin;
 
 	public Partida(int velocidad, long tiempo, String mapa, int cantidadJugadores) throws FileNotFoundException {
 		super();
@@ -75,8 +78,9 @@ public class Partida extends JFrame implements Runnable {
 //        this.cargarObstaculos(mapa);
 		this.jugadores = new ArrayList<>();
 		this.pantallas = new ArrayList<>();
+		this.jugadoresOrdenFin = new ArrayList<>();
 		this.PLAYER_AMOUNT = cantidadJugadores;
-		
+
 		// Init pantallas y jugadores
 		for (int i = 1; i <= PLAYER_AMOUNT; i++) {
 			Jugador jugador = new Jugador(50, 0, "dinogif.gif", "dino#" + i);
@@ -119,16 +123,20 @@ public class Partida extends JFrame implements Runnable {
 				} else if (e.getKeyCode() == KeyEvent.VK_A) {
 					jugadores.get(0).moverseXneg();
 				} else {
-                    switch(e.getKeyCode()) {
-                    case KeyEvent.VK_Z: jugadores.get(1).saltar();
-                    break;
-                    case KeyEvent.VK_X: jugadores.get(2).saltar();
-                    break;
-                    case KeyEvent.VK_C: jugadores.get(3).saltar();
-                    break;
-                    }
+					switch (e.getKeyCode()) {
+					case KeyEvent.VK_Z:
+						jugadores.get(1).saltar();
+						break;
+					case KeyEvent.VK_X:
+						jugadores.get(2).saltar();
+						break;
+					case KeyEvent.VK_C:
+						jugadores.get(3).saltar();
+						break;
+					}
 
-			}}
+				}
+			}
 		});
 
 	}
@@ -201,6 +209,15 @@ public class Partida extends JFrame implements Runnable {
 			pantalla.repaint();
 		}
 	}
+	
+	public class compararPuntuacion implements Comparator<Jugador> {
+
+	    @Override
+	    public int compare(Jugador o1, Jugador o2) {
+	        return o2.getPuntuacion() - o1.getPuntuacion();
+	    }
+	}
+	
 
 	private void update() {
 		for (Pantalla pantalla : pantallas) {
@@ -208,8 +225,8 @@ public class Partida extends JFrame implements Runnable {
 		}
 		for (Jugador jugador : jugadores) {
 			jugador.manejarSalto((int) (getContentPane().getHeight() * GROUND_HEIGHT_PERCENTAGE));
-			if(jugador.isVivo()) {
-				jugador.setPuntuacion(jugador.getPuntuacion()+1);
+			if (jugador.isVivo()) {
+				jugador.setPuntuacion(jugador.getPuntuacion() + 1);
 			}
 		}
 		int cantVivos = 0;
@@ -218,23 +235,11 @@ public class Partida extends JFrame implements Runnable {
 				cantVivos++;
 			}
 		}
-		if (/*cantVivos == 0*/true) {
+		if (cantVivos == 0) {
 			isRunning = false;
-			/*JFrame fin = new JFrame();
-			fin.setLayout(new BorderLayout());
-			fin.setDefaultCloseOperation(EXIT_ON_CLOSE);
-			fin.setSize(720,720);
-			JLabel texto = new JLabel("Fin de la Partida");
-			fin.add(texto, BorderLayout.CENTER);
-			//fin.setLayout(new GridLayout(5,1));
-			fin.setVisible(true);*/
 			JFrame frame = new JFrame();
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			/*Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		    int height = screenSize.height;
-		    int width = screenSize.width;
-		    frame.setSize(width/2, height/2);*/
-			frame.setBounds(100, 100, 450, 300);
+			frame.setBounds(100, 100, 450, 422);
 			JPanel contentPane = new JPanel();
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			setContentPane(contentPane);
@@ -243,7 +248,7 @@ public class Partida extends JFrame implements Runnable {
 			JLabel lblNewLabel = new JLabel("Fin de la Partida");
 			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			
+
 			lblNewLabel.setBounds(84, 11, 261, 58);
 			contentPane.add(lblNewLabel);
 
@@ -251,27 +256,35 @@ public class Partida extends JFrame implements Runnable {
 			lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNewLabel_1.setBounds(104, 80, 93, 14);
 			contentPane.add(lblNewLabel_1);
-
-			JLabel lblNewLabel_2 = new JLabel("Nombre jugador");
+			
+			jugadores.sort(new compararPuntuacion());
+			
+			JLabel lblNewLabel_2 = new JLabel(jugadores.get(0).getNombre());
 			lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			lblNewLabel_2.setBounds(199, 77, 133, 20);
 			contentPane.add(lblNewLabel_2);
 
-			String[] columnNames = { "Posición", "Jugador", "Puntuación"};
+			String[] header = { "Posición", "Jugador", "Puntuación" };
+			Object[][] data = new Object[jugadores.size()][3];
+			for (int i = 0; i < jugadores.size(); i++) {
+				data[i][0] = i + 1;
+				data[i][1] = jugadores.get(i).getNombre();
+				data[i][2] = jugadores.get(i).getPuntuacion();
+			}
 
-			Object[][] data = { { "1", jugadores.get(0).getNombre(), jugadores.get(0).getPuntuacion() },
-					{ "2", jugadores.get(1).getNombre(), jugadores.get(1).getPuntuacion()  },
-					{ "3", jugadores.get(2).getNombre(), jugadores.get(2).getPuntuacion()  },
-					{ "4", jugadores.get(3).getNombre(), jugadores.get(3).getPuntuacion()  }};
-
-			JTable table = new JTable(data, columnNames);
-			table.setBorder(new TitledBorder(50, "pOSICION"));
-			table.setBounds(71, 108, 297, 142);
+			JTable table = new JTable(data, header);
+			table.setBounds(71, 108, 297, 16 * jugadores.size());
+			table.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			//frame.setLayout(new FlowLayout());
 			contentPane.add(table);
 			
+			JLabel lblNewLabel_3 = new JLabel("");
+			lblNewLabel_3.setIcon(new ImageIcon("auxilio-me.gif"));
+			lblNewLabel_3.setBounds(38, 196, 361, 193);
+			contentPane.add(lblNewLabel_3);
 
-		    // center the jframe on screen
-		    //frame.setLocationRelativeTo(null);
+			// center the jframe on screen
+			// frame.setLocationRelativeTo(null);			
 			frame.add(contentPane);
 			frame.setVisible(true);
 		}
