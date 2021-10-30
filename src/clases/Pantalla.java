@@ -47,6 +47,12 @@ public class Pantalla extends JPanel {
         for (Obstaculo obstaculo : obstaculos) {
             g2d.drawRect(obstaculo.getX(), getGroundHeight() / partida.PLAYER_AMOUNT, 50, -50);
         }
+        
+        g2d.setFont(new Font("Aharoni", Font.BOLD , 16));
+        g2d.drawString(String.valueOf(jugador.getPuntuacion()), 140, 30);
+        g2d.drawString("Puntuacion:", 10, 30);
+        g2d.drawString("Nombre:", 10, 12);
+        g2d.drawString(jugador.getNombre(), 100, 12);
     }
 
     private int getGroundHeight() {

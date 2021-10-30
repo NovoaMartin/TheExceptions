@@ -1,6 +1,9 @@
 package clases;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
+
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -205,6 +208,9 @@ public class Partida extends JFrame implements Runnable {
 		}
 		for (Jugador jugador : jugadores) {
 			jugador.manejarSalto((int) (getContentPane().getHeight() * GROUND_HEIGHT_PERCENTAGE));
+			if(jugador.isVivo()) {
+				jugador.setPuntuacion(jugador.getPuntuacion()+1);
+			}
 		}
 		int cantVivos = 0;
 		for (Jugador jugador : jugadores) {
@@ -212,15 +218,65 @@ public class Partida extends JFrame implements Runnable {
 				cantVivos++;
 			}
 		}
-		if (cantVivos == 0) {
+		if (/*cantVivos == 0*/true) {
 			isRunning = false;
-			JFrame fin = new JFrame();
+			/*JFrame fin = new JFrame();
 			fin.setLayout(new BorderLayout());
 			fin.setDefaultCloseOperation(EXIT_ON_CLOSE);
-			JButton texto = new JButton("FIN");
+			fin.setSize(720,720);
+			JLabel texto = new JLabel("Fin de la Partida");
 			fin.add(texto, BorderLayout.CENTER);
-			fin.setExtendedState(MAXIMIZED_BOTH);
-			fin.setVisible(true);
+			//fin.setLayout(new GridLayout(5,1));
+			fin.setVisible(true);*/
+			JFrame frame = new JFrame();
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		    int height = screenSize.height;
+		    int width = screenSize.width;
+		    frame.setSize(width/2, height/2);
+			//frame.setBounds(100, 100, 450, 300);
+			JPanel contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			setContentPane(contentPane);
+			contentPane.setLayout(null);
+
+			JLabel lblNewLabel = new JLabel("Fin de la Partida");
+			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
+			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			
+			lblNewLabel.setBounds(84, 11, 261, 58);
+			contentPane.add(lblNewLabel);
+
+			JLabel lblNewLabel_1 = new JLabel("Ganador:");
+			lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblNewLabel_1.setBounds(104, 80, 93, 14);
+			contentPane.add(lblNewLabel_1);
+
+			JLabel lblNewLabel_2 = new JLabel("Nombre jugador");
+			lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblNewLabel_2.setBounds(199, 77, 133, 20);
+			contentPane.add(lblNewLabel_2);
+
+			String[] columnNames = { "Posición", "Jugador", "Puntuación"};
+
+			Object[][] data = { { "1", "Smith", 45 },
+					{ "2", "Doe", "Rowing" },
+					{ "3", "Black", "Knitting" },
+					{ "4", "White", "Speed reading" },
+					{ "5", "Brown", "Pool" }};
+
+			JTable table = new JTable(data, columnNames);
+			table.setEnabled(false);
+			table.setFillsViewportHeight(true);
+			table.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			table.setBounds(71, 108, 297, 80);
+			contentPane.add(table);
+			
+
+		    // center the jframe on screen
+		    frame.setLocationRelativeTo(null);
+			frame.add(contentPane);
+			frame.setVisible(true);
 		}
 
 	}
