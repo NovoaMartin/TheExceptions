@@ -77,7 +77,7 @@ public class Partida extends JFrame implements Runnable {
 		
 		// Init pantallas y jugadores
 		for (int i = 1; i <= PLAYER_AMOUNT; i++) {
-			Jugador jugador = new Jugador(50, 0, "estoico.png", "dino#" + i);
+			Jugador jugador = new Jugador(50, 0, "dinogif.gif", "dino#" + i);
 			jugador.saltar();
 			jugadores.add(jugador);
 		}
@@ -205,16 +205,15 @@ public class Partida extends JFrame implements Runnable {
             }
         }
         if (cantVivos == 0) {
-            isRunning = false;
-            JFrame fin = new JFrame();
-            JLabel texto = new JLabel("FIN");
-            texto.setBounds(500, 500, 200, 200);
-            fin.add(texto);
-            fin.setLayout(null);
-            fin.setExtendedState(MAXIMIZED_BOTH);
-            fin.setVisible(true);
-            fin.repaint();
-        }
+			isRunning = false;
+			JFrame fin = new JFrame();
+			fin.setLayout(new BorderLayout());
+			fin.setDefaultCloseOperation(EXIT_ON_CLOSE);
+			JButton texto = new JButton("FIN");
+			fin.add(texto, BorderLayout.CENTER);
+			fin.setExtendedState(MAXIMIZED_BOTH);
+			fin.setVisible(true);
+		}
 
 	}
 

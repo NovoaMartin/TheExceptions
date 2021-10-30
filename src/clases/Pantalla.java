@@ -36,7 +36,7 @@ public class Pantalla extends JPanel {
         System.out.println(partida.getContentPane().getHeight());
         //Render jugador:
         if (jugador.isVivo()) {
-            g2d.drawImage(jugador.getImagen(), jugador.getX(), jugador.getY() / partida.PLAYER_AMOUNT - jugador.getImagen().getHeight(), null);
+            g2d.drawImage(jugador.getImagen(), jugador.getX(), jugador.getY() / partida.PLAYER_AMOUNT - jugador.getImagen().getHeight(null), null);
         }
 
         //Render piso:

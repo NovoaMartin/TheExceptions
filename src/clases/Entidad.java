@@ -4,24 +4,27 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 abstract public class Entidad {
     protected Ubicacion posicion;
     protected int ancho;
     protected int alto;
-    private BufferedImage imagen;
+    private Image imagen;
 
     public Entidad(int x, int y, String imagen) {
-        this.posicion = new Ubicacion(x, y);
-        try {
-            this.imagen = ImageIO.read(new File(imagen));
-            this.ancho = this.imagen.getWidth();
-            this.alto = this.imagen.getHeight();
-        } catch (IOException e) {
-            System.out.println("ERROR AL CARGAN IMAGEN");
-            imagen = null;
+            this.posicion = new Ubicacion(x, y);
+            try {
+            	Toolkit toolkit = Toolkit.getDefaultToolkit();
+                this.imagen = toolkit.getImage(imagen);
+                this.ancho = 70;
+                this.alto = 40;
+            } catch (NullPointerException e) {
+                System.out.println("ERROR AL CARGAN IMAGEN");
+                imagen = null;
+            }
         }
-    }
 
     public void moverse(int d) {
         this.posicion.setPosx(this.posicion.getPosx() + d);
@@ -44,7 +47,7 @@ abstract public class Entidad {
         return posicion.getPosy();
     }
 
-    public BufferedImage getImagen() {
+    public Image getImagen() {
         return imagen;
     }
 
