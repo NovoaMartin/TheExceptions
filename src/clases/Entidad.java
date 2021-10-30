@@ -27,6 +27,7 @@ abstract public class Entidad {
         this.posicion.setPosx(this.posicion.getPosx() + d);
     }
 
+
     public boolean colisionaCon(Entidad otro) {
         boolean colisionaEnX = this.posicion.getPosx() + this.ancho >=
                 otro.posicion.getPosx() && otro.ancho + otro.posicion.getPosx() >= this.posicion.getPosx();
@@ -57,5 +58,8 @@ abstract public class Entidad {
 
     public void setY(int y) {
         this.posicion.setPosy(y);
+    }
+    public void setX(int x) {
+    	this.posicion.setPosx(x);
     }
 }
