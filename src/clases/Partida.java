@@ -198,7 +198,23 @@ public class Partida extends JFrame implements Runnable {
 		}
 		for (Jugador jugador : jugadores) {
 			jugador.manejarSalto((int) (getContentPane().getHeight() * GROUND_HEIGHT_PERCENTAGE));
-		}
+		}int cantVivos = 0;
+        for (Jugador jugador : jugadores) {
+            if (jugador.isVivo()) {
+                cantVivos++;
+            }
+        }
+        if (cantVivos == 0) {
+            isRunning = false;
+            JFrame fin = new JFrame();
+            JLabel texto = new JLabel("FIN");
+            texto.setBounds(500, 500, 200, 200);
+            fin.add(texto);
+            fin.setLayout(null);
+            fin.setExtendedState(MAXIMIZED_BOTH);
+            fin.setVisible(true);
+            fin.repaint();
+        }
 
 	}
 
