@@ -24,16 +24,15 @@ public class Partida extends JFrame implements Runnable {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		JFrame frame = new JFrame();
+
 		JButton button = new JButton("Play");
-		
-		frame.setLayout(null);
-		frame.setBounds(10, 10, 10, 10);
-		button.setBounds(650, 650, 500, 100);
-		
-		frame.add(button);
+		frame.setLayout(new BorderLayout());
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		frame.add(button, BorderLayout.CENTER);
 		frame.setExtendedState(MAXIMIZED_BOTH);
 		button.setFont(new Font("arial", 0, 30));
-		
+
 		frame.setVisible(true);
 
 		button.addActionListener(new ActionListener() {
@@ -44,7 +43,7 @@ public class Partida extends JFrame implements Runnable {
 				try {
 					p = new Partida(1, 0, "0", 4);
 					tp = new Thread(p);
-					
+
 				} catch (FileNotFoundException ex) {
 					ex.printStackTrace();
 				}
@@ -116,9 +115,17 @@ public class Partida extends JFrame implements Runnable {
 					jugadores.get(0).moverseX();
 				} else if (e.getKeyCode() == KeyEvent.VK_A) {
 					jugadores.get(0).moverseXneg();
-				}
+				} else {
+                    switch(e.getKeyCode()) {
+                    case KeyEvent.VK_Z: jugadores.get(1).saltar();
+                    break;
+                    case KeyEvent.VK_X: jugadores.get(2).saltar();
+                    break;
+                    case KeyEvent.VK_C: jugadores.get(3).saltar();
+                    break;
+                    }
 
-			}
+			}}
 		});
 
 	}
@@ -198,13 +205,14 @@ public class Partida extends JFrame implements Runnable {
 		}
 		for (Jugador jugador : jugadores) {
 			jugador.manejarSalto((int) (getContentPane().getHeight() * GROUND_HEIGHT_PERCENTAGE));
-		}int cantVivos = 0;
-        for (Jugador jugador : jugadores) {
-            if (jugador.isVivo()) {
-                cantVivos++;
-            }
-        }
-        if (cantVivos == 0) {
+		}
+		int cantVivos = 0;
+		for (Jugador jugador : jugadores) {
+			if (jugador.isVivo()) {
+				cantVivos++;
+			}
+		}
+		if (cantVivos == 0) {
 			isRunning = false;
 			JFrame fin = new JFrame();
 			fin.setLayout(new BorderLayout());
