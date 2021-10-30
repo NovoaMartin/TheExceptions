@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Partida extends JFrame implements Runnable {
 	public static final double GROUND_HEIGHT_PERCENTAGE = 0.85;
@@ -21,9 +23,9 @@ public class Partida extends JFrame implements Runnable {
 	boolean isRunning = true;
 
 	public static void main(String[] args) throws FileNotFoundException {
-
 		Partida p = new Partida(1, 0, "0", 4);
 		p.run();
+		
 	}
 
 	private int velocidad;
@@ -46,7 +48,7 @@ public class Partida extends JFrame implements Runnable {
 		this.jugadores = new ArrayList<>();
 		this.pantallas = new ArrayList<>();
 		this.PLAYER_AMOUNT = cantidadJugadores;
-
+		
 		// Init pantallas y jugadores
 		for (int i = 1; i <= PLAYER_AMOUNT; i++) {
 			Jugador jugador = new Jugador(50, 0, "estoico.png", "dino#" + i);
@@ -89,6 +91,7 @@ public class Partida extends JFrame implements Runnable {
 				} else if (e.getKeyCode() == KeyEvent.VK_A) {
 					jugadores.get(0).moverseXneg();
 				}
+				
 			}
 		});
 
