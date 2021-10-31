@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
@@ -12,6 +13,8 @@ import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.Color;
 
 public class prueba extends JFrame {
 
@@ -38,8 +41,9 @@ public class prueba extends JFrame {
 	 */
 	public prueba() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 422);
+		setBounds(100, 100, 450, 614);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -69,14 +73,24 @@ public class prueba extends JFrame {
 				{ "5", "Brown", "Pool" }};
 
 		JTable table = new JTable(data, columnNames);
-		table.setFillsViewportHeight(true);
 		table.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		table.setBounds(104, 105, 225, 80);
-		contentPane.add(table);
+		JScrollPane pane = new JScrollPane(table);
+		pane.setBounds(71, 108, 297, 89);
+		contentPane.add(pane);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\franc\\Documents\\GitHub\\TheExceptions\\auxilio-me.gif"));
-		lblNewLabel_3.setBounds(38, 196, 361, 193);
+		lblNewLabel_3.setBounds(38, 207, 361, 193);
 		contentPane.add(lblNewLabel_3);
+		
+		JButton btnNewButton = new JButton("Reiniciar");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		btnNewButton.setBounds(38, 438, 361, 41);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Salir");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 26));
+		btnNewButton_1.setBounds(38, 503, 361, 41);
+		contentPane.add(btnNewButton_1);
 	}
 }

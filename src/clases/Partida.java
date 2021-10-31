@@ -239,7 +239,7 @@ public class Partida extends JFrame implements Runnable {
 			isRunning = false;
 			JFrame frame = new JFrame();
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setBounds(100, 100, 450, 422);
+			frame.setBounds(700, 250, 450, 614);
 			JPanel contentPane = new JPanel();
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			setContentPane(contentPane);
@@ -273,15 +273,25 @@ public class Partida extends JFrame implements Runnable {
 			}
 
 			JTable table = new JTable(data, header);
-			table.setBounds(71, 108, 297, 16 * jugadores.size());
 			table.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-			//frame.setLayout(new FlowLayout());
-			contentPane.add(table);
+			JScrollPane pane = new JScrollPane(table);
+			pane.setBounds(71, 108, 297, 16 * jugadores.size() + 25);
+			contentPane.add(pane);
 			
 			JLabel lblNewLabel_3 = new JLabel("");
-			lblNewLabel_3.setIcon(new ImageIcon("auxilio-me.gif"));
-			lblNewLabel_3.setBounds(38, 196, 361, 193);
+			lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\franc\\Documents\\GitHub\\TheExceptions\\auxilio-me.gif"));
+			lblNewLabel_3.setBounds(38, 207, 361, 193);
 			contentPane.add(lblNewLabel_3);
+			
+			JButton btnNewButton = new JButton("Reiniciar");
+			btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
+			btnNewButton.setBounds(38, 438, 361, 41);
+			contentPane.add(btnNewButton);
+			
+			JButton btnNewButton_1 = new JButton("Salir");
+			btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 26));
+			btnNewButton_1.setBounds(38, 503, 361, 41);
+			contentPane.add(btnNewButton_1);
 
 			// center the jframe on screen
 			// frame.setLocationRelativeTo(null);			
