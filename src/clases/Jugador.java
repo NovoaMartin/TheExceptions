@@ -28,7 +28,7 @@ public class Jugador extends Entidad {
 	public void saltar() {
 		// Solo puede saltar si esta en el piso, es decir, NO tiene velocidad en Y
 		if (this.velocidadY == 0) {
-			this.velocidadY = -51;
+			this.velocidadY = -41;
 		}
 		// Logica a ejecutarse cada frame del juego:
 //        if (velocidadY != 0) {
@@ -43,7 +43,7 @@ public class Jugador extends Entidad {
 	}
 
 	public void moverseX() {
-		this.setX(this.getX() + 10);
+		this.setX(this.getX() + 20);
 	}
 
 	public void moverseXneg() {
